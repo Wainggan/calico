@@ -120,6 +120,26 @@ function CalicoTemplate() constructor {
 		return self
 	}
 	
+	/// @func add(_triggers)
+	/// @desc sets several triggers at once
+	/// @param {Struct} _triggers a struct, in which each member's name is the name of the trigger to set, 
+	/// and each member's value is that trigger.
+	/// "onenter" and "onleave" will set their respective triggers.
+	/// @returns {Struct.CalicoTemplate}
+	static add = function(_triggers) {
+		var _names = struct_get_names(_triggers)
+		for (var i = 0; i < array_length(_names); i++) {
+			var _n = _names[i]
+			if _n == "onenter"
+				__last.onenter = _triggers[$ _n]
+			else if _n == "onleave"
+				__last.onleave = _triggers[$ _n]
+			else
+				__last.events[$ _n] = _triggers[$ _n]
+		}
+		return self
+	}
+	
 }
 
 // Feather enable GM1045

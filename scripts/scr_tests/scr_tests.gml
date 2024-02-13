@@ -109,6 +109,16 @@ function test_templates(_) {
 	assert(_, _template.__names[$ "third"] != undefined, ".state() failed to add state after .back()")
 	assert(_, _template.__names[$ "third"].parent == undefined, $".back() failed to properly reset parent")
 	
+	_template.add({
+		onenter: __onenter,
+		onleave: __onleave,
+		meow: __onmeow,
+	})
+	
+	assert(_, _template.__names[$ "third"].onenter == __onenter, ".add() failed to set onenter trigger")
+	assert(_, _template.__names[$ "third"].onleave == __onleave, ".add() failed to set onleave trigger")
+	assert(_, _template.__names[$ "third"].events[$ "meow"] == __onmeow, ".add() failed to set meow trigger")
+	
 	var _machine = calico_create(_template)
 	
 	assert(_, is_instanceof(_machine, Calico), "calico_create() failed somehow")

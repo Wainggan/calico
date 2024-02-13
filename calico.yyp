@@ -32,8 +32,8 @@
     {"id":{"name":"scr_calico","path":"scripts/scr_calico/scr_calico.yy",},},
   ],
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_calico_example","path":"rooms/rm_calico_example/rm_calico_example.yy",},},
     {"roomId":{"name":"rm_calico_test","path":"rooms/rm_calico_test/rm_calico_test.yy",},},
+    {"roomId":{"name":"rm_calico_example","path":"rooms/rm_calico_example/rm_calico_example.yy",},},
   ],
   "templateType": "game",
   "TextureGroups": [
