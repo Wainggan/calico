@@ -55,6 +55,7 @@ function CalicoTemplate() constructor {
 	static state = function(_name) {
 		var _node = new CalicoTemplateNode(_name)
 		
+		if last _node.parent = last.parent
 		last = _node
 		
 		names[$ _name] = _node
