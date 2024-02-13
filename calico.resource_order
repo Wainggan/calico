@@ -1,0 +1,9 @@
+{
+  "FolderOrderSettings": [
+    {"name":"calico","order":3,"path":"folders/calico.yy",},
+  ],
+  "ResourceOrderSettings": [
+    {"name":"scr_calico_template","order":2,"path":"scripts/scr_calico_template/scr_calico_template.yy",},
+    {"name":"scr_calico","order":1,"path":"scripts/scr_calico/scr_calico.yy",},
+  ],
+}
