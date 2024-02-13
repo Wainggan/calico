@@ -32,19 +32,19 @@ function CalicoTemplateNode(_name) constructor {
 function CalicoTemplate() constructor {
 	
 	/// @ignore
-	config_init = ""
+	__config_init = ""
 	/// @ignore
-	names = {}
+	__names = {}
 	
 	/// @ignore
-	last = undefined
+	__last = undefined
 	
 	/// @func init(_name)
 	/// @desc sets the initial state
 	/// @params {string,real} _name name of the state. can be string or real (to allow enums)
 	/// @returns {Struct.CalicoTemplate}
 	static init = function(_name) {
-		config_init = _name
+		__config_init = _name
 		return self
 	}
 	
@@ -55,10 +55,10 @@ function CalicoTemplate() constructor {
 	static state = function(_name) {
 		var _node = new CalicoTemplateNode(_name)
 		
-		if last _node.parent = last.parent
-		last = _node
+		if __last _node.parent = __last.parent
+		__last = _node
 		
-		names[$ _name] = _node
+		__names[$ _name] = _node
 		
 		return self
 	}
@@ -70,12 +70,12 @@ function CalicoTemplate() constructor {
 	static child = function(_name) {
 		var _node = new CalicoTemplateNode(_name)
 		
-		array_push(last.children, _node)
+		array_push(__last.children, _node)
 		
-		_node.parent = last
-		last = _node
+		_node.parent = __last
+		__last = _node
 		
-		names[$ _name] = _node
+		__names[$ _name] = _node
 		
 		return self
 	}
@@ -84,7 +84,7 @@ function CalicoTemplate() constructor {
 	/// @desc pulls the hierarchy a level higher
 	/// @returns {Struct.CalicoTemplate}
 	static back = function() {
-		last = last.parent
+		__last = __last.parent
 		return self
 	}
 	
@@ -94,7 +94,7 @@ function CalicoTemplate() constructor {
 	/// the callback's first argument will be the running state machine struct.
 	/// @returns {Struct.CalicoTemplate}
 	static onenter = function(_callback) {
-		last.onenter = _callback
+		__last.onenter = _callback
 		return self
 	}
 	
@@ -104,7 +104,7 @@ function CalicoTemplate() constructor {
 	/// the callback's first argument will be the running state machine struct.
 	/// @returns {Struct.CalicoTemplate}
 	static onleave = function(_callback) {
-		last.onleave = _callback
+		__last.onleave = _callback
 		return self
 	}
 	
@@ -116,7 +116,7 @@ function CalicoTemplate() constructor {
 	/// the callback's first argument will be the running state machine struct.
 	/// @returns {Struct.CalicoTemplate}
 	static on = function(_event, _callback) {
-		last.events[$ _event] = _callback
+		__last.events[$ _event] = _callback
 		return self
 	}
 	
@@ -240,14 +240,14 @@ function calico_create(_template = undefined) {
 	
 	if _template {
 		
-		_controller.current = _template.config_init
+		_controller.current = _template.__config_init
 		
 		// sigh
 		// feather ignore GM1041
-		var _names = struct_get_names(_template.names)
+		var _names = struct_get_names(_template.__names)
 		// feather enable GM1041
 		for (var i = 0; i < array_length(_names); i++) {
-			_controller.states[$ _names[i]] = _template.names[$ _names[i]].copy()
+			_controller.states[$ _names[i]] = _template.__names[$ _names[i]].copy()
 		}
 		
 	}

@@ -65,17 +65,17 @@ function test_templates(_) {
 	
 	_template.init("start")
 	
-	assert(_, _template.config_init == "start", ".init() failed to set config")
+	assert(_, _template.__config_init == "start", ".init() failed to set config")
 	
 	_template.state("start")
 	
-	assert(_, _template.names[$ "start"] != undefined, ".state() failed to add state")
-	assert(_, _template.names[$ "start"].parent == undefined, ".state(): root state's parent should be undefined")
+	assert(_, _template.__names[$ "start"] != undefined, ".state() failed to add state")
+	assert(_, _template.__names[$ "start"].parent == undefined, ".state(): root state's parent should be undefined")
 	
 	_template.state("second")
 	
-	assert(_, _template.names[$ "second"] != undefined, ".state() failed to add second state")
-	assert(_, _template.names[$ "second"].parent == undefined, ".state(): root state's parent should be undefined")
+	assert(_, _template.__names[$ "second"] != undefined, ".state() failed to add second state")
+	assert(_, _template.__names[$ "second"].parent == undefined, ".state(): root state's parent should be undefined")
 	
 	static __onenter = function() {}
 	static __onleave = function() {}
@@ -84,30 +84,30 @@ function test_templates(_) {
 	_template.onenter(__onenter)
 	_template.onleave(__onleave)
 	
-	assert(_, _template.names[$ "second"].onenter == __onenter, ".onenter() failed to set trigger")
-	assert(_, _template.names[$ "second"].onleave == __onleave, ".onleave() failed to set trigger")
+	assert(_, _template.__names[$ "second"].onenter == __onenter, ".onenter() failed to set trigger")
+	assert(_, _template.__names[$ "second"].onleave == __onleave, ".onleave() failed to set trigger")
 	
 	_template.on("meow", __onmeow)
 	
-	assert(_, _template.names[$ "second"].events[$ "meow"] != undefined, ".on() failed to add trigger")
-	assert(_, _template.names[$ "second"].events[$ "meow"] == __onmeow, ".on() failed to set trigger")
+	assert(_, _template.__names[$ "second"].events[$ "meow"] != undefined, ".on() failed to add trigger")
+	assert(_, _template.__names[$ "second"].events[$ "meow"] == __onmeow, ".on() failed to set trigger")
 	
 	_template.child("child")
 	
-	assert(_, _template.names[$ "child"] != undefined, ".child() failed to add state")
-	assert(_, _template.names[$ "child"].parent.name == "second", $".child() failed to set parent")
+	assert(_, _template.__names[$ "child"] != undefined, ".child() failed to add state")
+	assert(_, _template.__names[$ "child"].parent.name == "second", $".child() failed to set parent")
 	
 	_template.state("child2")
 	
-	assert(_, _template.names[$ "child2"] != undefined, ".state() failed to add second child")
-	assert(_, _template.names[$ "child2"].parent.name == "second", $".child() failed to set correct parent")
+	assert(_, _template.__names[$ "child2"] != undefined, ".state() failed to add second child")
+	assert(_, _template.__names[$ "child2"].parent.name == "second", $".child() failed to set correct parent")
 	
 	_template.back()
 	
 	_template.state("third")
 	
-	assert(_, _template.names[$ "third"] != undefined, ".state() failed to add state after .back()")
-	assert(_, _template.names[$ "third"].parent == undefined, $".back() failed to properly reset parent")
+	assert(_, _template.__names[$ "third"] != undefined, ".state() failed to add state after .back()")
+	assert(_, _template.__names[$ "third"].parent == undefined, $".back() failed to properly reset parent")
 	
 	var _machine = calico_create(_template)
 	
