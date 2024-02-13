@@ -1,0 +1,9 @@
+
+~~ included with itch.io releases ~~
+
+Import the .yymps as a local package to use the calico library. 
+Open the zip file's .yy to check the testing and example project.
+
+Documentation:
+https://github.com/Wainggan/calico/wiki/Start
+
