@@ -12,6 +12,8 @@
   "defaultScriptType": 1,
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"calico","folderPath":"folders/calico.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"testing","folderPath":"folders/testing.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"example project","folderPath":"folders/example project.yy",},
   ],
   "IncludedFiles": [],
   "isEcma": false,
@@ -20,6 +22,7 @@
     "IDEVersion": "2023.11.0.121",
   },
   "resources": [
+    {"id":{"name":"scr_tests","path":"scripts/scr_tests/scr_tests.yy",},},
     {"id":{"name":"rm_calico_test","path":"rooms/rm_calico_test/rm_calico_test.yy",},},
     {"id":{"name":"scr_calico","path":"scripts/scr_calico/scr_calico.yy",},},
   ],
