@@ -21,7 +21,6 @@
   },
   "resources": [
     {"id":{"name":"rm_calico_test","path":"rooms/rm_calico_test/rm_calico_test.yy",},},
-    {"id":{"name":"scr_calico_template","path":"scripts/scr_calico_template/scr_calico_template.yy",},},
     {"id":{"name":"scr_calico","path":"scripts/scr_calico/scr_calico.yy",},},
   ],
   "RoomOrderNodes": [
