@@ -23,10 +23,16 @@
   },
   "resources": [
     {"id":{"name":"scr_tests","path":"scripts/scr_tests/scr_tests.yy",},},
+    {"id":{"name":"spr_calico_example_wall","path":"sprites/spr_calico_example_wall/spr_calico_example_wall.yy",},},
+    {"id":{"name":"rm_calico_example","path":"rooms/rm_calico_example/rm_calico_example.yy",},},
+    {"id":{"name":"obj_calico_example_player","path":"objects/obj_calico_example_player/obj_calico_example_player.yy",},},
     {"id":{"name":"rm_calico_test","path":"rooms/rm_calico_test/rm_calico_test.yy",},},
+    {"id":{"name":"obj_calico_example_wall","path":"objects/obj_calico_example_wall/obj_calico_example_wall.yy",},},
+    {"id":{"name":"spr_calico_example_player","path":"sprites/spr_calico_example_player/spr_calico_example_player.yy",},},
     {"id":{"name":"scr_calico","path":"scripts/scr_calico/scr_calico.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_calico_example","path":"rooms/rm_calico_example/rm_calico_example.yy",},},
     {"roomId":{"name":"rm_calico_test","path":"rooms/rm_calico_test/rm_calico_test.yy",},},
   ],
   "templateType": "game",

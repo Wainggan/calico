@@ -132,6 +132,8 @@ function Calico() constructor {
 	defer = undefined
 	
 	running = false
+	running_name = ""
+	running_type = 0
 	
 	tree = []
 	index = 0
@@ -154,19 +156,22 @@ function Calico() constructor {
 		index = array_length(tree)
 		
 		running = true
+		running_name = _event
+		running_type = _type
 		
 		child(_event, _type)
 		
 		running = false
 		
-		if defer {
-			change(defer)
+		if defer != undefined {
+			var _defer = defer
 			defer = undefined
+			change(_defer)
 		}
 		
 	}
 	
-	static child = function(_event = "", _type = 0) {
+	static child = function(_event = running_name, _type = running_type) {
 		
 		if !running {
 			return;

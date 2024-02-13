@@ -6,6 +6,10 @@
   ],
   "ResourceOrderSettings": [
     {"name":"scr_tests","order":1,"path":"scripts/scr_tests/scr_tests.yy",},
+    {"name":"spr_calico_example_wall","order":4,"path":"sprites/spr_calico_example_wall/spr_calico_example_wall.yy",},
+    {"name":"obj_calico_example_player","order":1,"path":"objects/obj_calico_example_player/obj_calico_example_player.yy",},
+    {"name":"obj_calico_example_wall","order":2,"path":"objects/obj_calico_example_wall/obj_calico_example_wall.yy",},
+    {"name":"spr_calico_example_player","order":3,"path":"sprites/spr_calico_example_player/spr_calico_example_player.yy",},
     {"name":"scr_calico","order":1,"path":"scripts/scr_calico/scr_calico.yy",},
   ],
 }
