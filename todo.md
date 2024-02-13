@@ -12,7 +12,7 @@
 	- [ ] time
 	- [ ] improved child delegation (`calico_child(_, "differenttrigger")`)
 	- [ ] history tracking
-- [ ] improved state definition api
+- [x] improved state definition api
 
 this could be cool:
 
