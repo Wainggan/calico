@@ -16,7 +16,7 @@ template = calico_template()
 		
 		calico_child(_)
 		
-		// collisions
+		// quick dirty collisions
 		x += x_vel
 		var _inst = instance_place(x, y, obj_calico_example_wall)
 		if _inst {
