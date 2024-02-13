@@ -1,9 +1,9 @@
 
 # calico
 
-simple reverse inheritance state machine library for gamemaker
+A simple reverse inheritance state machine library for gamemaker
 
-it has a simple api to create simple state machines:
+It has a simple api to create simple state machines:
 
 ```gml
 state = calico_create()
@@ -25,7 +25,7 @@ calico_change(state, "subtract")
 calico_run(state, "run")
 ```
 
-alternatively, create a template:
+Alternatively, create a template:
 
 ```gml
 template = calico_template()
@@ -42,7 +42,7 @@ template = calico_template()
 state = calico_create(template)
 ```
 
-and if you need it, utilize the unique reverse inheritance model:
+And if you need it, utilize the unique reverse inheritance model:
 
 ```gml
 template = calico_template()
@@ -65,5 +65,5 @@ calico_change(state, "bottom")
 calico_run(state, "run") // prints "bottom", then "top"
 ```
 
-check the documentation for more details.
+Check [the documentation](https://github.com/Wainggan/calico/wiki) for more details.
 
