@@ -7,3 +7,6 @@ Open the zip file's .yy to check the testing and example project.
 Documentation:
 https://github.com/Wainggan/calico/wiki/Start
 
+Report any issues or ideas here:
+https://github.com/Wainggan/calico/issues
+
