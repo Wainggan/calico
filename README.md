@@ -10,12 +10,12 @@ state = calico_create()
 
 calico_mutate_state(state, "add")
 calico_mutate_on(state, "run", "step", function () {
-	frame++
+   frame++
 })
 
 calico_mutate_state(state, "subtract")
 calico_mutate_on(state, "run", "step", function () {
-	frame--
+   frame--
 })
 
 calico_change(state, "add")
@@ -31,13 +31,13 @@ Alternatively, create a template:
 template = calico_template()
 .init("add")
 .state("add")
-	.on("run", function () {
-		frame++
-	})
+   .on("run", function () {
+      frame++
+   })
 .state("subtract")
-	.on("run", function() {
-		frame--
-	})
+   .on("run", function() {
+      frame--
+   })
 
 state = calico_create(template)
 ```
@@ -47,14 +47,14 @@ And if you need it, utilize the unique reverse inheritance model:
 ```gml
 template = calico_template()
 .state("top")
-	.on("run", function (_) {
-		calico_child(_) // delegates to a child
-		show_debug_message("top")
-	})
-	.child("bottom")
-		.on("run", function () {
-			show_debug_message("bottom")
-		})
+   .on("run", function (_) {
+      calico_child(_) // delegates to a child
+      show_debug_message("top")
+   })
+   .child("bottom")
+      .on("run", function () {
+         show_debug_message("bottom")
+      })
 
 state = calico_create(template)
 
