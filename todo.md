@@ -14,12 +14,3 @@
 	- [ ] history tracking
 - [x] improved state definition api
 
-this could be cool:
-
-```
-template.add("idle", {
-	onenter: function() {},
-	step: function() {},
-	draw: function() {},
-})
-```
