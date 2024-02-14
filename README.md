@@ -10,17 +10,17 @@ It has a simple api to create simple state machines:
 ```gml
 state = calico_create()
 
-calico_mutate_state(state, "add")
-calico_mutate_on(state, "run", "step", function () {
+calico_mutate_state(state, "addition")
+calico_mutate_on(state, "addition", "run", function () {
    frame++
 })
 
 calico_mutate_state(state, "subtract")
-calico_mutate_on(state, "run", "step", function () {
+calico_mutate_on(state, "subtract", "run", function () {
    frame--
 })
 
-calico_change(state, "add")
+calico_change(state, "addition")
 calico_run(state, "run")
 
 calico_change(state, "subtract")
@@ -31,8 +31,8 @@ Alternatively, create a template:
 
 ```gml
 template = calico_template()
-.init("add")
-.state("add").add({
+.init("addition")
+.state("addition").add({
    run: function() {
       frame++
    },
