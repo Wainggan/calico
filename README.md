@@ -3,6 +3,8 @@
 
 A simple reverse inheritance state machine library for gamemaker
 
+![calico logo image thing](./calico.png)
+
 It has a simple api to create simple state machines:
 
 ```gml
