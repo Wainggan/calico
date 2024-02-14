@@ -32,14 +32,16 @@ Alternatively, create a template:
 ```gml
 template = calico_template()
 .init("add")
-.state("add")
-   .on("run", function () {
+.state("add").add({
+   run: function() {
       frame++
-   })
-.state("subtract")
-   .on("run", function() {
-      frame--
-   })
+   },
+})
+.state("subtract").add({
+   run: function() {
+      frame++
+   },
+})
 
 state = calico_create(template)
 ```
@@ -48,15 +50,17 @@ And if you need it, utilize the unique reverse inheritance model:
 
 ```gml
 template = calico_template()
-.state("top")
-   .on("run", function (_) {
+.state("top").add({
+   run: function (_) {
       calico_child(_) // delegates to a child
       show_debug_message("top")
-   })
-   .child("bottom")
-      .on("run", function () {
+   },
+})
+   .child("bottom").add({
+      run: function () {
          show_debug_message("bottom")
-      })
+      },
+   })
 
 state = calico_create(template)
 
