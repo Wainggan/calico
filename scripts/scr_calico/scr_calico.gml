@@ -12,15 +12,18 @@ function CalicoTemplateNode(_name) constructor {
 	parent = undefined
 	children = []
 	
-	static copy = function(){
+	static copy = function(_context = undefined){
 		var _events = {}
 		var _names = struct_get_names(events)
 		for (var i = 0; i < array_length(_names); i++) {
-			_events[$ _names[i]] = events[$ _names[i]]
+			var _e = events[$ _names[i]]
+			_events[$ _names[i]] = _context != undefined ? method(_context, _e) : _e
 		}
 		return {
-			parent: parent ? parent.name : "",
-			onenter, onleave, events: _events
+			parent: (parent != undefined ? parent.name : ""),
+			onenter: (_context != undefined && onenter ? method(_context, onenter) : onenter), 
+			onleave: (_context != undefined && onleave ? method(_context, onleave) : onleave), 
+			events: _events
 		}
 	}
 	
@@ -125,6 +128,7 @@ function CalicoTemplate() constructor {
 	/// @param {Struct} _triggers a struct, in which each member's name is the name of the trigger to set, 
 	/// and each member's value is that trigger.
 	/// "onenter" and "onleave" will set their respective triggers.
+	/// when creating a machine using a template that used .add(), make sure to set self correctly
 	/// @returns {Struct.CalicoTemplate}
 	static add = function(_triggers) {
 		var _names = struct_get_names(_triggers)
@@ -253,8 +257,10 @@ function calico_template() {
 /// @func calico_create([_template])
 /// @desc creates a new state machine, optionally from a previously created template
 /// @param {Struct.CalicoTemplate} _template a template to create from
+/// @param {Instance} _context new context to set all triggers to. is self by default. 
+/// set to undefined to disable.
 /// @returns {Struct.Calico} a new state machine
-function calico_create(_template = undefined) {
+function calico_create(_template = undefined, _context = self) {
 	
 	var _controller = new Calico()
 	
@@ -267,7 +273,7 @@ function calico_create(_template = undefined) {
 		var _names = struct_get_names(_template.__names)
 		// feather enable GM1041
 		for (var i = 0; i < array_length(_names); i++) {
-			_controller.states[$ _names[i]] = _template.__names[$ _names[i]].copy()
+			_controller.states[$ _names[i]] = _template.__names[$ _names[i]].copy(_context)
 		}
 		
 	}

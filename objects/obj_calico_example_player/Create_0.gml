@@ -6,45 +6,47 @@ enum PlayerState {
 
 template = calico_template()
 .state("base")
-	.on("step", function (_) {
+	.add({
+		step: function (_) {
 		
-		// input checking
-		key_left = keyboard_check(vk_left)
-		key_right = keyboard_check(vk_right)
-		key_jump = keyboard_check(ord("Z"))
-		key_jumped = keyboard_check_pressed(ord("Z"))
+			// input checking
+			key_left = keyboard_check(vk_left)
+			key_right = keyboard_check(vk_right)
+			key_jump = keyboard_check(ord("Z"))
+			key_jumped = keyboard_check_pressed(ord("Z"))
 		
-		calico_child(_)
+			calico_child(_)
 		
-		// quick dirty collisions
-		x += x_vel
-		var _inst = instance_place(x, y, obj_calico_example_wall)
-		if _inst {
-			var _left = abs(bbox_left - x)
-			var _right = abs(bbox_right - x)
-			if x_vel < 0 {
-				x = _inst.bbox_right + _left
-			} else {
-				x = _inst.bbox_left - _right
+			// quick dirty collisions
+			x += x_vel
+			var _inst = instance_place(x, y, obj_calico_example_wall)
+			if _inst {
+				var _left = abs(bbox_left - x)
+				var _right = abs(bbox_right - x)
+				if x_vel < 0 {
+					x = _inst.bbox_right + _left
+				} else {
+					x = _inst.bbox_left - _right
+				}
+				x_vel = 0
 			}
-			x_vel = 0
-		}
 		
-		y += y_vel
-		_inst = instance_place(x, y, obj_calico_example_wall)
-		if _inst {
-			var _top = abs(bbox_top - y)
-			var _bottom = abs(bbox_bottom - y)
-			if y_vel < 0 {
-				y = _inst.bbox_bottom + _top
-			} else {
-				y = _inst.bbox_top - _bottom
+			y += y_vel
+			_inst = instance_place(x, y, obj_calico_example_wall)
+			if _inst {
+				var _top = abs(bbox_top - y)
+				var _bottom = abs(bbox_bottom - y)
+				if y_vel < 0 {
+					y = _inst.bbox_bottom + _top
+				} else {
+					y = _inst.bbox_top - _bottom
+				}
+				y_vel = 0
 			}
-			y_vel = 0
-		}
-	})
-	.on("draw", function (_) {
-		draw_sprite(spr_calico_example_player, 0, x, y)
+		},
+		draw: function (_) {
+			draw_sprite(spr_calico_example_player, 0, x, y)
+		},
 	})
 	.child(PlayerState.free)
 		.on("step", function (_) {
